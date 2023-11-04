@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class CustomerListComponent {
 
+
+  openModal() {
+    const myModal = document.getElementById('myModal');
+    if(myModal != null) myModal.style.display = 'block';
+  }
+
+  closeModal() {
+    const myModal = document.getElementById('myModal');
+    if(myModal != null) myModal.style.display = 'none';
+  }
 }

@@ -1,1 +1,39 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
+/**
+* fonts
+*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+/**
+* variables
+*/
+$primary: #1fbfae;
+$secondary: #fd8f9b;
+$secondary-dark: #fc1e38;
+
+$gray-light: #eceff1;
+$gray-dark: #72818d;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "secondary-dark": $secondary-dark,
+  "danger": rgb(195, 56, 56),
+  "success": rgb(44, 223, 44),
+  "warning": rgb(222, 222, 47)
+);
+
+/**
+* styles customizations
+*/
+
+header { 
+    height: 50px;
+    a {
+        font-size: 14px;
+        padding: 9px 17px 10px 0 !important;
+    }
+}
+a { text-decoration: none !important; }
+
+
+@import "node_modules/bootstrap/scss/bootstrap";

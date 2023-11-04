@@ -6,16 +6,18 @@
   <title>Tranfeera Test</title>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a routerLink="/customers">Seus favorecidos</a></li>  
-      </ul>
-    </nav>
+  <header class="bg-primary">
+    <div class="container">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar text-white border-bottom border-2 " routerLink="/customers">Seus favorecidos</a>
+        </div>
+      </nav>
+    </div>
   </header>
-  
-  
-  <router-outlet></router-outlet>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </body>
 </html>
 
