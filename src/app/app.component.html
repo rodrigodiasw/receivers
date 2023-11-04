@@ -6,15 +6,16 @@
   <title>Tranfeera Test</title>
 </head>
 <body>
-  <header class="bg-primary">
-    <div class="container">
-      <nav class="navbar">
+  <header class="container bg-white w-100 py-2">
+    <a routerLink="/"><img src="assets/images/logo.svg" alt="Logo"></a>
+  </header>
+    <div class="bg-primary">
+      <nav class="navbar container">
         <div class="container-fluid">
-          <a class="navbar text-white border-bottom border-2 " routerLink="/customers">Seus favorecidos</a>
+          <a class="navbar text-white border-bottom border-2 " routerLink="/receivers">Seus favorecidos</a>
         </div>
       </nav>
     </div>
-  </header>
   <div class="container">
     <router-outlet></router-outlet>
   </div>

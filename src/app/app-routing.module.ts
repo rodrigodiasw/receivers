@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CustomerListComponent } from "./component/customer-list/customer-list.component";
+import { ReceiverListComponent } from "./component/receiver-list/receiver-list.component";
 const routes: Routes = [
-  { path: 'customers', component: CustomerListComponent },
+  { path: '', redirectTo: '/receivers', pathMatch: 'full' },
+  { path: 'receivers', component: ReceiverListComponent },
 ];
 
 @NgModule({

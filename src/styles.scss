@@ -6,6 +6,8 @@
 /**
 * variables
 */
+
+$white: #FFF;
 $primary: #1fbfae;
 $secondary: #fd8f9b;
 $secondary-dark: #fc1e38;
@@ -26,14 +28,62 @@ $theme-colors: (
 * styles customizations
 */
 
-header { 
-    height: 50px;
-    a {
-        font-size: 14px;
-        padding: 9px 17px 10px 0 !important;
-    }
+body {
+  background-color: #f2f2f2;
 }
 a { text-decoration: none !important; }
 
+.navbar { 
+  padding: 0 !important;
+  height: 50px;
+  
+  a {
+
+    font-family: 'Roboto';
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0px;
+    padding: 12px 0 !important;
+  }
+}
+
+.bg-gray-light {
+  background-color: $gray-light;
+}
+
+input {
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 14px;
+}
+input::placeholder {
+  color: #9DADBB !important;
+}
+
+button:hover {
+  opacity: 0.8;;
+}
+
+button.btn-add-receiver {
+  
+  color: $gray-dark;
+  font-family: 'Roboto';
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 32.81px;
+
+  svg {
+    font-size: 41px;
+    color: $primary;
+    position: relative;
+    bottom: -6px;
+    margin-left: 10px;
+  }
+}
+
+.filter-receiver {
+  background-color: $white;
+  border-radius: 4px;
+}
 
 @import "node_modules/bootstrap/scss/bootstrap";
