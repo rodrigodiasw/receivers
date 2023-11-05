@@ -22,16 +22,22 @@ export class ReceiverListComponent implements OnInit {
   receiverDetail: IReceiver | undefined;
   currentPage: number = 1;
   itemsPerPage: number = 10;
-  showModal: boolean = true;
-  contentModal:string = 'create-receiver';
+  showModal: boolean = false;
+  contentModal:string = '';
 
 
   constructor(private receiverService: ReceiverService) { }
 
+  /**
+   * init
+   */
   ngOnInit() {
     this.loadReceivers();
   }
 
+  /**
+   * load receivers
+   */
   loadReceivers() {
 
     let filterParam = this.identifyFilterType();
@@ -41,12 +47,18 @@ export class ReceiverListComponent implements OnInit {
     });
   }
 
+  /**
+   * handle input change
+   */
   onInputChange() {
     if (this.inputValue === '') {
       this.loadReceivers();
     }
   }
   
+  /**
+   * select all receiver
+   */
   selectAllReceivers() {
     this.receivers.forEach(item => {
       item.selected = !this.selectedAll;
@@ -74,13 +86,20 @@ export class ReceiverListComponent implements OnInit {
     return '';
   }
 
+  /**
+   * 
+   * @param content 
+   */
   toggleModal(content:string = '') {
     
     this.contentModal = content;
-    console.log(this.contentModal);
     this.showModal = !this.showModal;
   }
   
+  /**
+   * 
+   * @param receiver 
+   */
   updateReceiver(receiver:IReceiver) {
     
     this.receiverService.updateReceiver(receiver).subscribe(updatedReceiver => {
@@ -89,20 +108,28 @@ export class ReceiverListComponent implements OnInit {
     });
   }
 
+  /**
+   * remove receiver
+   */
   deleteReceiver() {
-    this.receivers.map((item, index) => {
-      if(item?.selected) {
-        console.log(item.name);
-        // to do: deletar receiver
+    this.receivers.map((receiver) => {
+      if(receiver?.selected) {
+        this.removeReceiver(receiver.id)
       }
     })
+
+    this.loadReceivers();
   }
 
+  /**
+   * 
+   * @param receiverId 
+   */
   removeReceiver(receiverId:string = '') {
 
     this.receiverService.deleteReceiver(receiverId).subscribe(() => {
       this.loadReceivers();
-      this.toggleModal();
+      if(this.showModal) this.toggleModal();
     });
   }
   
@@ -118,6 +145,10 @@ export class ReceiverListComponent implements OnInit {
     })
   }
 
+  /**
+   * 
+   * @param receiver 
+   */
   detailReceiver(receiver:IReceiver) {
 
     this.receiverDetail = receiver;
