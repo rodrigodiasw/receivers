@@ -3,6 +3,7 @@ import { faCirclePlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-ico
 
 import { ReceiverService } from './services/receiver.service';
 import { IReceiver } from "./receiver.interface";
+import { SweetAlertOptions } from 'sweetalert2';
 
 @Component({
   selector: 'app-receiver-list',
@@ -24,6 +25,8 @@ export class ReceiverListComponent implements OnInit {
   itemsPerPage: number = 10;
   showModal: boolean = false;
   contentModal:string = '';
+  showAlert:boolean = false;
+  dataAlert: SweetAlertOptions = {}
 
 
   constructor(private receiverService: ReceiverService) { }
@@ -65,6 +68,10 @@ export class ReceiverListComponent implements OnInit {
     });
   }
 
+  /**
+   * 
+   * @returns 
+   */
   identifyFilterType(): string {
     
     let filterValue = this.inputValue;
@@ -111,12 +118,16 @@ export class ReceiverListComponent implements OnInit {
   /**
    * remove receiver
    */
-  deleteReceiver() {
+  massiveRemoveReceiver() {
     this.receivers.map((receiver) => {
       if(receiver?.selected) {
-        this.removeReceiver(receiver.id)
+        this.removeReceiver(receiver.id, true)
       }
     })
+
+    this.dataAlert.icon = 'info';
+    this.dataAlert.title = 'Favorecidos removidos com sucesso';
+    this.toggleAlert(true);
 
     this.loadReceivers();
   }
@@ -125,11 +136,16 @@ export class ReceiverListComponent implements OnInit {
    * 
    * @param receiverId 
    */
-  removeReceiver(receiverId:string = '') {
+  removeReceiver(receiverId:string = '', isMassive:boolean = false) {
 
     this.receiverService.deleteReceiver(receiverId).subscribe(() => {
       this.loadReceivers();
-      if(this.showModal) this.toggleModal();
+      if(this.showModal && !isMassive) this.toggleModal();
+      if(!isMassive) {
+        this.dataAlert.icon = 'info';
+        this.dataAlert.title = 'Favorecido removido com sucesso';
+        this.toggleAlert(true);
+      }
     });
   }
   
@@ -141,8 +157,18 @@ export class ReceiverListComponent implements OnInit {
     
     this.receiverService.postReceiver(receiverData).subscribe((response) => {
       this.loadReceivers();
+      this.dataAlert.icon = 'info';
+      this.dataAlert.title = 'Favorecido cadastrado com sucesso';
+      this.toggleAlert(true);
       this.toggleModal();
     })
+  }
+
+  toggleAlert(showAlert:boolean) {
+    this.showAlert = showAlert;
+    setTimeout(()=>{
+      this.showAlert = false;
+    },3000)
   }
 
   /**

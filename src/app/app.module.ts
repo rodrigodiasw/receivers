@@ -10,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { ReceiverCreateComponent } from './component/receiver-create/receiver-create.component';
 import { ReceiverDetailComponent } from './component/receiver-detail/receiver-detail.component';
+import { SweetAlertComponent } from './component/utils/alert/sweet-alert/sweet-alert.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ReceiverDetailComponent } from './component/receiver-detail/receiver-de
     ReceiverListComponent,
     ModalComponent,
     ReceiverCreateComponent,
-    ReceiverDetailComponent
+    ReceiverDetailComponent,
+    SweetAlertComponent
   ],
   imports: [
     HttpClientModule, 

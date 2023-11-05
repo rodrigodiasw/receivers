@@ -26,10 +26,10 @@
     (updateReceiver)="updateReceiver($event)"
     ></app-receiver-detail>
 </app-modal>
-
+<app-sweet-alert *ngIf="showAlert" [dataAlert]="dataAlert"></app-sweet-alert>
 <div class="row my-5">
   <div class="col-md-12">
-    <button class="btn btn-secondary delete-receivers" (click)="deleteReceiver()">
+    <button class="btn btn-secondary delete-receivers" (click)="massiveRemoveReceiver()">
       Excluir Selecionados
     </button>
   </div>

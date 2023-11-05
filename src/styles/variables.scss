@@ -10,6 +10,11 @@ $gray-main: #72818d;
 $blue-main: #3D8CD8;
 $green-main: #1FBFAE;
 
+$warning: #FFB748;
+$success: #1FD1C2;
+$error: #FF003A;
+$info: #0096ED;
+
 $theme-colors: (
   "primary": $primary,
   "secondary": $secondary,
@@ -17,7 +22,9 @@ $theme-colors: (
   "green-main": $green-main,
   "gray-main": $gray-main,
   "secondary-dark": $secondary-dark,
-  "danger": rgb(195, 56, 56),
-  "success": rgb(44, 223, 44),
-  "warning": rgb(222, 222, 47)
+  "error": $error,
+  "success": $success,
+  "warning": $warning,
+  "info": $info
 );
+
