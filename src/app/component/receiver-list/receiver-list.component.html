@@ -13,17 +13,17 @@
 
 
 <app-modal *ngIf="showModal" [customModal]="contentModal=='create-receiver' ? 'modal-full' : 'modal-default'" (toggleModal)="toggleModal()">
-  <app-customer-create 
+  <app-receiver-create 
     *ngIf="contentModal=='create-receiver'"
     (toggleModal)="toggleModal()"
-    ></app-customer-create>
-  <app-customer-detail 
+    ></app-receiver-create>
+  <app-receiver-detail 
     *ngIf="contentModal=='detail-receiver'"
     [receiver]="receiverDetail"
     (toggleModal)="toggleModal()"
     (removeReceiver)="removeReceiver($event)"
     (updateReceiver)="updateReceiver($event)"
-    ></app-customer-detail>
+    ></app-receiver-detail>
 </app-modal>
 
 <div class="row my-5">

@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-customer-detail',
-  templateUrl: './customer-detail.component.html',
-  styleUrls: ['./customer-detail.component.scss']
+  selector: 'app-receiver-detail',
+  templateUrl: './receiver-detail.component.html',
+  styleUrls: ['./receiver-detail.component.scss']
 })
-export class CustomerDetailComponent {
+export class ReceiverDetailComponent {
   
   @Input() receiver: any = false;
   @Output() toggleModal = new EventEmitter();

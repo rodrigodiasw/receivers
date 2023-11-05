@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-customer-create',
-  templateUrl: './customer-create.component.html',
-  styleUrls: ['./customer-create.component.scss']
+  selector: 'app-receiver-create',
+  templateUrl: './receiver-create.component.html',
+  styleUrls: ['./receiver-create.component.scss']
 })
-export class CustomerCreateComponent {
+export class ReceiverCreateComponent {
 
   @Output() toggleModal = new EventEmitter();
 

@@ -8,16 +8,16 @@ import { ReceiverListComponent } from './component/receiver-list/receiver-list.c
 import { ModalComponent } from './component/utils/modal/modal.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
-import { CustomerCreateComponent } from './component/customer-create/customer-create.component';
-import { CustomerDetailComponent } from './component/customer-detail/customer-detail.component';
+import { ReceiverCreateComponent } from './component/receiver-create/receiver-create.component';
+import { ReceiverDetailComponent } from './component/receiver-detail/receiver-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReceiverListComponent,
     ModalComponent,
-    CustomerCreateComponent,
-    CustomerDetailComponent
+    ReceiverCreateComponent,
+    ReceiverDetailComponent
   ],
   imports: [
     HttpClientModule, 
