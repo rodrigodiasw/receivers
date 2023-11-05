@@ -1,0 +1,23 @@
+$white: #FFF;
+$primary: #1fbfae;
+$secondary: #fd8f9b;
+$secondary-dark: #fc1e38;
+
+$gray-light: #eceff1;
+$gray-dark: #4D565D;
+$gray-main: #72818d;
+
+$blue-main: #3D8CD8;
+$green-main: #1FBFAE;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "blue-main": $blue-main,
+  "green-main": $green-main,
+  "gray-main": $gray-main,
+  "secondary-dark": $secondary-dark,
+  "danger": rgb(195, 56, 56),
+  "success": rgb(44, 223, 44),
+  "warning": rgb(222, 222, 47)
+);

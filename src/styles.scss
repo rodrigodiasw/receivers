@@ -7,30 +7,13 @@
 * variables
 */
 
-$white: #FFF;
-$primary: #1fbfae;
-$secondary: #fd8f9b;
-$secondary-dark: #fc1e38;
-
-$gray-light: #eceff1;
-$gray-dark: #72818d;
-
-$theme-colors: (
-  "primary": $primary,
-  "secondary": $secondary,
-  "secondary-dark": $secondary-dark,
-  "danger": rgb(195, 56, 56),
-  "success": rgb(44, 223, 44),
-  "warning": rgb(222, 222, 47)
-);
+@import '../src/styles/variables.scss';
 
 /**
 * styles customizations
 */
 
-body {
-  background-color: #f2f2f2;
-}
+
 a { text-decoration: none !important; }
 
 .navbar { 
@@ -45,6 +28,10 @@ a { text-decoration: none !important; }
     letter-spacing: 0px;
     padding: 12px 0 !important;
   }
+}
+
+.btn-text-light {
+  color: $white !important;
 }
 
 .bg-gray-light {
@@ -66,7 +53,7 @@ button:hover {
 
 button.btn-add-receiver {
   
-  color: $gray-dark;
+  color: $gray-main;
   font-family: 'Roboto';
   font-size: 28px;
   font-weight: 300;
@@ -81,9 +68,84 @@ button.btn-add-receiver {
   }
 }
 
-.filter-receiver {
-  background-color: $white;
-  border-radius: 4px;
+button.btn.delete-receivers {
+  color: $white;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  padding: 17px;
 }
+
+.filter-receiver {
+  background-color: #FFF;
+  border-radius: 4px;
+  max-width: 300px;
+}
+
+.list-flex {
+
+  font-family: 'Roboto';
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+
+
+  .item-flex {
+
+    flex: 1;
+    flex-basis: 100px;
+  }
+
+  li:first-child {
+    margin-right: 20px;
+  }
+}
+
+.list-receivers-head {
+
+  font-weight: 700;
+  line-height: 18.75px;
+  color: $gray-main;
+}
+
+.list-receivers-body {
+  font-weight: 300;
+  line-height: 19px;
+  color: #4D565D;
+  margin-bottom: 15px;
+}
+
+.receiver-status {
+
+  display: block;
+  color: $white;
+  border-radius: 16px;
+  text-align: center;
+  padding: 7px;
+  width: 95%;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+
+
+  &.status-validated {
+    background-color: $blue-main;
+  }
+
+  &.status-sketch {
+    background-color: $gray-main;
+  }
+}
+
+.modal {
+  display: initial !important;
+}
+
+
 
 @import "node_modules/bootstrap/scss/bootstrap";

@@ -1,0 +1,19 @@
+<div id="modalContent" class="modal" [ngClass]="customModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button (click)="onToggleModal()" type="button" class="btn-close-modal" data-bs-dismiss="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" [attr.width]="svgProperties.width" [attr.height]="svgProperties.height" [attr.viewBox]="svgProperties.viewBox" [attr.fill]="svgProperties.fill">
+                        <ng-container *ngFor="let rect of svgProperties.rects">
+                            <rect [attr.x]="rect.x" [attr.y]="rect.y" [attr.width]="rect.width" [attr.height]="rect.height" [attr.transform]="rect.transform" [attr.fill]="rect.fill" />
+                        </ng-container>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </div>
+</div>
+

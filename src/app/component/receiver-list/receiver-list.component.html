@@ -1,32 +1,64 @@
 <div class="bg-gray-light row py-4">
     <div class="col-md-9">
-        <button class="btn btn-add-receiver" (click)="openModal('creareReceiver')">Seus favorecidos <fa-icon [icon]="faCirclePlus"></fa-icon></button>
+        <button class="btn btn-add-receiver" (click)="toggleModal('create-receiver')">Seus favorecidos <fa-icon [icon]="faCirclePlus"></fa-icon></button>
     </div>
     <div class="col-md-3 pt-2">
         <form class="form-inline filter-receiver d-flex border-0">
-            <input class="form-control mr-sm-2 border-0" type="search" placeholder="Nome, CPF, agência ou conta" aria-label="Search">
-            <button class="btn" type="submit"><fa-icon [icon]="faMagnifyingGlass"></fa-icon></button>
+            <input class="form-control mr-sm-2 border-0" type="search" name="search-receiver" placeholder="Nome, CPF, agência ou conta" aria-label="Search" [(ngModel)]="inputValue" (input)="onInputChange()">
+            <button class="btn" type="submit" (click)="loadReceivers()" (keyup.enter)="loadReceivers()"><fa-icon [icon]="faMagnifyingGlass"></fa-icon></button>
         </form>
     </div>
 </div>
 
-<div class="row">
 
+
+<app-modal *ngIf="showModal" [customModal]="contentModal=='create-receiver' ? 'modal-full' : 'modal-default'" (toggleModal)="toggleModal()">
+  <app-customer-create *ngIf="contentModal=='create-receiver'"></app-customer-create>
+  <app-customer-detail 
+    *ngIf="contentModal=='detail-receiver'"
+    [receiver]="receiverDetail"
+    (toggleModal)="toggleModal()"
+    (removeReceiver)="removeReceiver($event)"
+    (updateReceiver)="updateReceiver($event)"
+    ></app-customer-detail>
+</app-modal>
+
+<div class="row my-5">
+  <div class="col-md-12">
+    <button class="btn btn-secondary delete-receivers" (click)="deleteReceiver()">
+      Excluir Selecionados
+    </button>
+  </div>
 </div>
-<div id="creareReceiver" class="modal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button (click)="closeModal()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-receivers-head list-flex mb-4">
+      <li><input type="checkbox" name="itemCheckbox" [(ngModel)]="selectedAll" (click)="selectAllReceivers()"></li>
+      <li class="item-flex">Favorecido</li>
+      <li class="item-flex">CPF/CNPJ</li>
+      <li class="item-flex">Banco</li>
+      <li class="item-flex">Agência</li>
+      <li class="item-flex">CC</li>
+      <li class="item-flex">Status do Favorecido</li>
+    </ul>
+    <ul *ngFor="let receiver of receivers" class="list-receivers-body list-flex">
+      <li>
+        <input type="checkbox" name="itemCheckbox" [(ngModel)]="receiver.selected">
+      </li>
+      <li class="item-flex">
+        <button class="bg-transparent border-0" (click)="detailReceiver(receiver)">{{ receiver.name }}</button>
+      </li>
+      <li class="item-flex">{{ receiver.tax_id }}</li>
+      <li class="item-flex">{{ receiver.branch }}</li>
+      <li class="item-flex">{{ receiver.bank_code }}</li>
+      <li class="item-flex">{{ receiver.account }}</li>
+      <li class="item-flex">
+        <span class="receiver-status" [ngClass]="{
+          'status-validated': receiver.status === 'validado',
+          'status-sketch': receiver.status === 'rascunho'
+        }">{{ receiver.status }}</span>
+      </li>
+    </ul>
+  </div>
 </div>
+

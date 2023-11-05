@@ -1,0 +1,9 @@
+@import '../../../styles/variables.scss';
+
+.list-receivers-body {
+    .item-flex,
+    .item-flex button {
+        color: $gray-main;
+        font-weight: 300;
+    }
+}
