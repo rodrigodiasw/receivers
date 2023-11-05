@@ -109,8 +109,10 @@ export class ReceiverListComponent implements OnInit {
    */
   updateReceiver(receiver:IReceiver) {
     
-    this.receiverService.updateReceiver(receiver).subscribe(updatedReceiver => {
-      console.log('updatedReceiver: ', updatedReceiver)
+    this.receiverService.updateReceiver(receiver).subscribe( _ => {
+      this.dataAlert.icon = 'info';
+      this.dataAlert.title = 'Favorecido atualizado com sucesso';
+      this.toggleAlert(true);
       this.toggleModal();
     });
   }
@@ -138,9 +140,9 @@ export class ReceiverListComponent implements OnInit {
    */
   removeReceiver(receiverId:string = '', isMassive:boolean = false) {
 
-    this.receiverService.deleteReceiver(receiverId).subscribe(() => {
-      this.loadReceivers();
+    this.receiverService.deleteReceiver(receiverId).subscribe( _ => {
       if(this.showModal && !isMassive) this.toggleModal();
+      this.loadReceivers();
       if(!isMassive) {
         this.dataAlert.icon = 'info';
         this.dataAlert.title = 'Favorecido removido com sucesso';
@@ -155,7 +157,7 @@ export class ReceiverListComponent implements OnInit {
    */
   registerReceiver(receiverData:IReceiver) {
     
-    this.receiverService.postReceiver(receiverData).subscribe((response) => {
+    this.receiverService.postReceiver(receiverData).subscribe( _ => {
       this.loadReceivers();
       this.dataAlert.icon = 'info';
       this.dataAlert.title = 'Favorecido cadastrado com sucesso';
