@@ -1,1 +1,67 @@
-<p>receiver-create works!</p>
+<div class="container mt-5">
+    <form>
+        <div class="row my-4 py-2">
+            <div class="col-md-12">
+                <h3 class="title-form-receiver">Quais os dados favorecido?</h3>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-md-6">  
+                <div class="form-group">
+                    <label for="nome">Qual o nome completo ou razão social do favorecido?</label>
+                    <input type="text" class="form-control" placeholder="Nome" name="name" [(ngModel)]="receiver.name">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="cpf">Qual o CPF ou CNPJ?</label>
+                    <input type="text" class="form-control" name="tax_id" placeholder="CPF/CNPJ" [(ngModel)]="receiver.tax_id">
+                </div>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Qual o e-mail para o envio do comprovante?</label>
+                    <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="receiver.email">
+                </div>
+            </div>
+        </div>
+        <div class="row my-4 py-2">
+            <div class="col-md-12">
+                <h3 class="title-form-receiver">Quais os dados bancários do favorecido?</h3>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-md-6">
+                
+                <div class="form-group">
+                    <label for="tipo-chave">Tipo de Chave</label>
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="receiver.pix_key_type" name="tipoChave">
+                        <option value="">Selecione...</option>
+                        <option value="aleatoria">aleatoria</option>
+                        <option value="cnpj">cnpj</option>
+                        <option value="cpf">cpf</option>
+                        <option value="email">email</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row my-4">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="chave">Chave</label>
+                    <input [disabled]="!receiver.pix_key_type" type="text" class="form-control" name="pix_key" placeholder="Chave" [(ngModel)]="receiver.pix_key">
+                </div>
+            </div>
+        </div>
+        <div class="row row-footer">
+            <div class="col-md-6">
+                <button type="submit" class="btn border-green-main text-green-main btn-back px-md-5" (click)="onToggleModal()">Cancelar</button>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end ">
+                <button type="submit" class="btn bg-blue-main btn-text-light px-md-5" (click)="onRegisterReceiver()">Salvar</button>
+            </div>
+        </div>
+    </form>
+</div>

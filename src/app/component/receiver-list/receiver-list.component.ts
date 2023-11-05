@@ -22,8 +22,8 @@ export class ReceiverListComponent implements OnInit {
   receiverDetail: IReceiver | undefined;
   currentPage: number = 1;
   itemsPerPage: number = 10;
-  showModal: boolean = false;
-  contentModal:string = '';
+  showModal: boolean = true;
+  contentModal:string = 'create-receiver';
 
 
   constructor(private receiverService: ReceiverService) { }
@@ -105,7 +105,7 @@ export class ReceiverListComponent implements OnInit {
       this.toggleModal();
     });
   }
-
+  
   /**
    * 
    * @param receiverData 
@@ -113,7 +113,8 @@ export class ReceiverListComponent implements OnInit {
   registerReceiver(receiverData:IReceiver) {
     
     this.receiverService.postReceiver(receiverData).subscribe((response) => {
-      console.log('response:', response);
+      this.loadReceivers();
+      this.toggleModal();
     })
   }
 

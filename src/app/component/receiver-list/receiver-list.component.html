@@ -16,6 +16,7 @@
   <app-receiver-create 
     *ngIf="contentModal=='create-receiver'"
     (toggleModal)="toggleModal()"
+    (registerReceiver)="registerReceiver($event)"
     ></app-receiver-create>
   <app-receiver-detail 
     *ngIf="contentModal=='detail-receiver'"
