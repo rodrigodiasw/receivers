@@ -13,7 +13,10 @@
 
 
 <app-modal *ngIf="showModal" [customModal]="contentModal=='create-receiver' ? 'modal-full' : 'modal-default'" (toggleModal)="toggleModal()">
-  <app-customer-create *ngIf="contentModal=='create-receiver'"></app-customer-create>
+  <app-customer-create 
+    *ngIf="contentModal=='create-receiver'"
+    (toggleModal)="toggleModal()"
+    ></app-customer-create>
   <app-customer-detail 
     *ngIf="contentModal=='detail-receiver'"
     [receiver]="receiverDetail"

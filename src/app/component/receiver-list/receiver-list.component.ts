@@ -2,24 +2,7 @@ import { Component, OnInit  } from '@angular/core';
 import { faCirclePlus, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 import { ReceiverService } from './services/receiver.service';
-
-interface IReceiver {
-  id: string;
-  name: string;
-  email: string;
-  tax_id: string;
-  branch: string | null;
-  account: string | null;
-  account_type: string | null;
-  bank_name: string | null;
-  bank_code: string | null;
-  pix_key: string;
-  pix_key_type: string;
-  status: string;
-  created_at: string;
-  updated_at: string;
-  selected: any;
-}
+import { IReceiver } from "./receiver.interface";
 
 @Component({
   selector: 'app-receiver-list',
@@ -121,6 +104,17 @@ export class ReceiverListComponent implements OnInit {
       this.loadReceivers();
       this.toggleModal();
     });
+  }
+
+  /**
+   * 
+   * @param receiverData 
+   */
+  registerReceiver(receiverData:IReceiver) {
+    
+    this.receiverService.postReceiver(receiverData).subscribe((response) => {
+      console.log('response:', response);
+    })
   }
 
   detailReceiver(receiver:IReceiver) {

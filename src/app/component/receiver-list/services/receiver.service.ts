@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { IReceiver } from "./../receiver.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class ReceiverService {
    * @param receiverData 
    * @returns 
    */
-  updateReceiver(receiverData: any): Observable<any> {
+  updateReceiver(receiverData: IReceiver): Observable<any> {
     const url = `${this.apiUrl}/${receiverData.id}`;
     const headers = { 'Content-Type': 'application/json' };
     
@@ -43,6 +44,17 @@ export class ReceiverService {
     const headers = { 'Content-Type': 'application/json' };
   
     return this.http.delete(url, { headers });
+  }
+
+  /**
+   * 
+   * @param receiverData 
+   * @returns 
+   */
+  postReceiver(receiverData:IReceiver): Observable<any> {
+    const headers = { 'Content-Type': 'application/json' };
+
+    return this.http.post(this.apiUrl, receiverData, { headers });
   }
 
 }
