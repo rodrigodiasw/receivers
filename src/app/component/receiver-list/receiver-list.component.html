@@ -54,7 +54,7 @@
       </li>
       <li class="item-flex">{{ receiver.tax_id }}</li>
       <li class="item-flex">{{ receiver.branch }}</li>
-      <li class="item-flex">{{ receiver.bank_code }}</li>
+      <li class="item-flex"><img [src]="'assets/images/branch/' + receiver.bank_code + '.png'" alt="Banco"></li>
       <li class="item-flex">{{ receiver.account }}</li>
       <li class="item-flex">
         <span class="receiver-status" [ngClass]="{
