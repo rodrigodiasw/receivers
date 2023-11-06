@@ -1,8 +1,8 @@
 <div class="bg-gray-light row py-4">
-    <div class="col-md-9">
+    <div class="col-sm-8">
         <button class="btn btn-add-receiver" (click)="toggleModal('create-receiver')">Seus favorecidos <fa-icon [icon]="faCirclePlus"></fa-icon></button>
     </div>
-    <div class="col-md-3 pt-2">
+    <div class="col-md-4 pt-2">
         <form class="form-inline filter-receiver d-flex border-0">
             <input class="form-control mr-sm-2 border-0" type="search" name="search-receiver" placeholder="Nome, CPF, agência ou conta" aria-label="Search" [(ngModel)]="inputValue" (input)="onInputChange()">
             <button class="btn" type="submit" (click)="loadReceivers()" (keyup.enter)="loadReceivers()"><fa-icon [icon]="faMagnifyingGlass"></fa-icon></button>
@@ -48,6 +48,30 @@
     </ul>
   </div>
 </div>
+
+<!-- pagination -->
+<div class="row my-4">
+  <div class="col-md-12 list-navigation">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li class="page-item">
+          <button class="page-link" aria-label="Previous" (click)="loadReceivers(paginationLinks['first'])">
+            <span aria-hidden="true">&laquo;</span>
+          </button>
+        </li>
+        <li *ngIf="paginationLinks['prev']" class="page-item"><button class="page-link bg-transparent border-0" (click)="loadReceivers(paginationLinks['prev'])">{{paginationLinks['prev']}}</button></li>
+        <li class="page-item"><span class="page-link bg-transparent border-0">{{currentlyPage}}</span></li>
+        <li *ngIf="paginationLinks['next']"class="page-item"><button class="page-link bg-transparent border-0" (click)="loadReceivers(paginationLinks['next'])">{{paginationLinks['next']}}</button></li>
+        <li *ngIf="paginationLinks['last']" class="page-item">
+          <button class="page-link" aria-label="Next" (click)="loadReceivers(paginationLinks['last'])">
+            <span aria-hidden="true">&raquo;</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
 <!-- modal -->
 <app-modal *ngIf="showModal && !showModalConfirmRemove" [customModal]="contentModal=='create-receiver' ? 'modal-full' : 'modal-default'" (toggleModal)="toggleModal()">
   <app-receiver-create 
@@ -66,38 +90,38 @@
 
 <div *ngIf="showModalConfirmRemove"  id="confirmModalContent" class="modal modal-default" tabindex="-1">
   <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <button (click)="toggleConfirmModal()" type="button" class="btn-close-modal" data-bs-dismiss="modal">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                      <rect x="7.65332" y="5.53296" width="16" height="3.70588" transform="rotate(45 7.65332 5.53296)" fill="black"/>
-                      <rect x="18.967" y="8.15338" width="16" height="3.70588" transform="rotate(135 18.967 8.15338)" fill="black"/>
-                      </svg>
-              </button>
-          </div>
-          <div class="modal-body">
-              <div class="container">
-                  <div class="row">
-                      <div class="col-md-12">
-                          <h3 class="head-receiver">Excluir favorecido</h3>
-                      </div>
-                  </div>
-                  <div class="row my-4">
-                      <div class="col-md-12 confirm-text">
-                          <p><span class="font-weight-400">Você confirma a exclusão do {{receiverRemoveData?.name}}?</span></p>
-                          <p>
-                              O Histórico de pagamentos para este favorecido será mantido, mas<br>ele será removido da sua lista de favorecidos.
-                          </p>
-                      </div>
-                  </div>
-                  <div class="row row-footer my-5">
-                      <div class="col-md-12 d-flex justify-content-between">
-                          <button type="submit" class="btn border-green-main text-green-main btn-back px-md-5" (click)="toggleConfirmModal()">Cancelar</button>
-                          <button type="submit" class="btn bg-error btn-text-light px-md-5" (click)="removeReceiver(receiverRemoveData?.id)">Confirmar exclusão</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <button (click)="toggleConfirmModal()" type="button" class="btn-close-modal" data-bs-dismiss="modal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                    <rect x="7.65332" y="5.53296" width="16" height="3.70588" transform="rotate(45 7.65332 5.53296)" fill="black"/>
+                    <rect x="18.967" y="8.15338" width="16" height="3.70588" transform="rotate(135 18.967 8.15338)" fill="black"/>
+                    </svg>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="head-receiver">Excluir favorecido</h3>
+                    </div>
+                </div>
+                <div class="row my-4">
+                    <div class="col-md-12 confirm-text">
+                        <p><span class="font-weight-400">Você confirma a exclusão do {{receiverRemoveData?.name}}?</span></p>
+                        <p>
+                            O Histórico de pagamentos para este favorecido será mantido, mas<br>ele será removido da sua lista de favorecidos.
+                        </p>
+                    </div>
+                </div>
+                <div class="row row-footer my-5">
+                    <div class="col-md-12 d-flex justify-content-between">
+                        <button type="submit" class="btn border-green-main text-green-main btn-back px-md-5" (click)="toggleConfirmModal()">Cancelar</button>
+                        <button type="submit" class="btn bg-error btn-text-light px-md-5" (click)="removeReceiver(receiverRemoveData?.id)">Confirmar exclusão</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
 </div>

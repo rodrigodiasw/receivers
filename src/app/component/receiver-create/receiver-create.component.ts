@@ -39,12 +39,8 @@ export class ReceiverCreateComponent {
   }
 
   onRegisterReceiver(){
-    if(this.validateReceiver()) this.registerReceiver.emit(this.receiver);
+    this.registerReceiver.emit(this.receiver);
   }
 
-  validateReceiver() {
 
-
-    return true;
-  }
 }

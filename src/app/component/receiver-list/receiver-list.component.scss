@@ -8,6 +8,20 @@
     }
 }
 
+.list-navigation {
+    display: flex;
+    justify-content: center;
+
+    .page-link {
+        color:$blue-main;
+        border: none;
+        font-family: 'Roboto';
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19px;
+    }
+}
+
 #confirmModalContent {
 
     &.modal-default {
@@ -27,7 +41,7 @@
                 .modal-header {
                     
                     display: flex;
-                    justify-content: end;
+                    justify-content: flex-end;
                     border: none;
             
                     .btn-close-modal {
@@ -68,3 +82,4 @@
         }
     }
 }
+

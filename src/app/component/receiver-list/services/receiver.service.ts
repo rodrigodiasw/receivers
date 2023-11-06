@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IReceiver } from "./../receiver.interface";
 
@@ -16,9 +16,9 @@ export class ReceiverService {
    * @param param 
    * @returns 
    */
-  getReceivers(param:string = ''): Observable<any> {
-    let url = param ? `${this.apiUrl}?${param}` : this.apiUrl;
-    return this.http.get(url);
+  getReceivers(param: string = '', page: string | number = 1): Observable<HttpResponse<any>> {
+    let url = param ? `${this.apiUrl}?${param}&_order=asc&_page=${page}&_limit=10` : `${this.apiUrl}?_order=desc&_page=${page}&_limit=10`;
+    return this.http.get(url, { observe: 'response' }); // Observe a resposta completa, incluindo o cabeçalho
   }
 
   /**

@@ -20,7 +20,6 @@ export class ReceiverDetailComponent {
 
   ngOnInit() {
     this.originalValue = this.receiver.name
-    console.log(this.receiver);
   }
 
   onConfirmRemoveReceiver() {

@@ -12,7 +12,7 @@
                     <input type="text" class="form-control" placeholder="Nome" name="name" [(ngModel)]="receiver.name">
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="cpf">Qual o CPF ou CNPJ?</label>
                     <input type="text" class="form-control" name="tax_id" placeholder="CPF/CNPJ" [(ngModel)]="receiver.tax_id">
@@ -29,12 +29,11 @@
         </div>
         <div class="row my-4 py-2">
             <div class="col-md-12">
-                <h3 class="title-form-receiver">Quais os dados bancários do favorecido?</h3>
+                <h3 class="title-form-receiver">Qual a chave pix?</h3>
             </div>
         </div>
         <div class="row my-4">
             <div class="col-md-6">
-                
                 <div class="form-group">
                     <label for="tipo-chave">Tipo de Chave</label>
                     <select class="form-select" aria-label="Default select example" [(ngModel)]="receiver.pix_key_type" name="tipoChave">
@@ -47,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="row my-4">
+        <div class="row my-4 mb-5">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="chave">Chave</label>
@@ -55,11 +54,11 @@
                 </div>
             </div>
         </div>
-        <div class="row row-footer">
+        <div class="row row-footer mt-5">
             <div class="col-md-6">
                 <button type="submit" class="btn border-green-main text-green-main btn-back px-md-5" (click)="onToggleModal()">Cancelar</button>
             </div>
-            <div class="col-md-6 d-flex justify-content-end ">
+            <div class="col-md-4 d-flex justify-content-end ">
                 <button type="submit" class="btn bg-blue-main btn-text-light px-md-5" (click)="onRegisterReceiver()">Salvar</button>
             </div>
         </div>

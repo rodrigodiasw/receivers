@@ -29,6 +29,8 @@ export class ReceiverListComponent implements OnInit {
   contentModal:string = '';
   showAlert:boolean = false;
   dataAlert: SweetAlertOptions = {}
+  paginationLinks: any = [];
+  currentlyPage: string | number = 1;
 
 
   constructor(private receiverService: ReceiverService) { }
@@ -43,15 +45,50 @@ export class ReceiverListComponent implements OnInit {
   /**
    * load receivers
    */
-  loadReceivers() {
+  loadReceivers(page: number = 1) {
 
-    let filterParam = this.identifyFilterType();
-    
-    this.receiverService.getReceivers(filterParam).subscribe(data => {
-      this.receivers = data;
+    this.currentlyPage = page;
+    this.receiverService.getReceivers('', page).subscribe((response) => {
+      
+      // Processar os dados da página atual
+      this.receivers = response.body;
+
+      // Extrair os links do cabeçalho "Link"
+      let linkHeader = response.headers.get('Link');
+      this.paginationLinks = this.parseLinkHeader(linkHeader);
     });
   }
 
+  parseLinkHeader(header: string|null): any {
+    
+    let links:any = {};
+    let pageValues:any = {};
+
+    if (header) {
+      const parts = header.split(', ');
+      for (const part of parts) {
+        const section = part.split(';');
+        const url = section[0].replace(/<(.*)>/, '$1').trim();
+        const name = section[1].replace(/rel="(.*)"/, '$1').trim();
+        links[name] = url;
+      }
+
+      
+
+      for (const key in links) {
+        if (links.hasOwnProperty(key)) {
+          const url = links[key];
+          const match = url.match(/_page=(\d+)/);
+          if (match && match[1]) {
+            pageValues[key] = parseInt(match[1], 10);
+          }
+        }
+      }
+    }
+    return pageValues;
+  }
+
+ 
   /**
    * handle input change
    */

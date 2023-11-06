@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import Swal, { SweetAlertOptions } from 'sweetalert2';
 
 @Component({
@@ -12,8 +12,6 @@ export class SweetAlertComponent {
   
 
   ngOnInit() {
-
-    console.log('ngOnInit');
     this.showAlert();
   }
 

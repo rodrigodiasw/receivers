@@ -30,6 +30,10 @@ a { text-decoration: none !important; }
   }
 }
 
+.container {
+  max-width: 960px !important;
+}
+
 .btn-text-light {
   color: $white !important;
 }
@@ -47,8 +51,17 @@ input::placeholder {
   color: #9DADBB !important;
 }
 
-button:hover {
-  opacity: 0.8;;
+button {
+  
+  &:hover {
+    // opacity: 0.8;
+    border: 1px solid red;
+  }
+
+  &:visited,
+  &:active {
+    border: 1px solid red;
+  }
 }
 
 button.btn-add-receiver {

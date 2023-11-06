@@ -1,9 +1,7 @@
 @import '../../../../styles/variables.scss';
 
 .modal {
-
     &.modal-full {
-
         .modal-dialog {
     
                 width: 100%;
@@ -33,6 +31,11 @@
 
             width: 75%;
             max-width: 75%;
+            
+            @media (min-width: 1200px) {
+                width: 50%;
+                max-width: 50%;
+            }
         }
     }
 
@@ -43,7 +46,7 @@
         .modal-header {
             
             display: flex;
-            justify-content: end;
+            justify-content: flex-end;
             border: none;
     
             .btn-close-modal {
