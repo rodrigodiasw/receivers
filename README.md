@@ -1,27 +1,32 @@
-# Test
+# Test Tranfeera
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+Este projeto foi gerado com o [Angular CLI](https://github.com/angular/angular-cli) na versão 16.2.6.
 
-## Development server
+## Baixar o projeto
+- Acesse o github: https://github.com/rodrigodiasw/receivers
+- Escolha a opção de clone (SSH ou HTTPS)
+- No terminal, clone o projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```
+git clone git@github.com:rodrigodiasw/receivers.git
+```
 
-## Code scaffolding
+## Instalar as dependências
+```
+npm install
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Servidor de Desenvolvimento
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Execute `ng serve` para iniciar um servidor de desenvolvimento. Acesse `http://localhost:4200/` no seu navegador. A aplicação será recarregada automaticamente se você fizer alguma alteração nos arquivos de origem.
 
-## Running unit tests
+## Inicie o JSON Server
+```
+json-server src\data\db.json
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Execução de Testes Unitários
 
-## Running end-to-end tests
+Execute `ng test` para executar os testes unitários via [Karma](https://karma-runner.github.io).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
