@@ -21,9 +21,11 @@ export class ReceiverListComponent implements OnInit {
   inputValue: string = '';
   receivers: IReceiver[] = [];
   receiverDetail: IReceiver | undefined;
+  receiverRemoveData: IReceiver | undefined;
   currentPage: number = 1;
   itemsPerPage: number = 10;
   showModal: boolean = false;
+  showModalConfirmRemove: boolean = false;
   contentModal:string = '';
   showAlert:boolean = false;
   dataAlert: SweetAlertOptions = {}
@@ -134,6 +136,15 @@ export class ReceiverListComponent implements OnInit {
     this.loadReceivers();
   }
 
+  confirmRemoveReceiver(receiver:IReceiver) {
+    this.receiverRemoveData = receiver;
+    this.toggleConfirmModal();
+  }
+
+  toggleConfirmModal() {
+    this.showModalConfirmRemove = !this.showModalConfirmRemove;
+  }
+
   /**
    * 
    * @param receiverId 
@@ -141,7 +152,11 @@ export class ReceiverListComponent implements OnInit {
   removeReceiver(receiverId:string = '', isMassive:boolean = false) {
 
     this.receiverService.deleteReceiver(receiverId).subscribe( _ => {
-      if(this.showModal && !isMassive) this.toggleModal();
+      if(this.showModal && !isMassive) {
+        this.toggleModal();
+        this.toggleConfirmModal();
+      }
+      
       this.loadReceivers();
       if(!isMassive) {
         this.dataAlert.icon = 'info';

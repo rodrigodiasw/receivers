@@ -10,7 +10,7 @@ export class ReceiverDetailComponent {
   
   @Input() receiver: any = false;
   @Output() toggleModal = new EventEmitter();
-  @Output() removeReceiver = new EventEmitter();
+  @Output() confirmRemoveReceiver = new EventEmitter();
   @Output() updateReceiver = new EventEmitter();
 
   originalValue:string = '';
@@ -23,8 +23,8 @@ export class ReceiverDetailComponent {
     console.log(this.receiver);
   }
 
-  onRemoveReceiver() {
-    this.removeReceiver.emit(this.receiver.id);
+  onConfirmRemoveReceiver() {
+    this.confirmRemoveReceiver.emit(this.receiver);
   }
 
   onUpdateReceiver() {
